@@ -22,9 +22,19 @@
                         </div>
                         <div class="topbar-menu right-menu">
                             <ul>
-                                <li class="menu-item"><a title="Register or Login" href="login.html">Login</a></li>
-                                <li class="menu-item"><a title="Register or Login"
-                                        href="register.html">Register</a></li>
+                                @if (!auth()->check())
+                                    <li class="menu-item">
+                                        <a title="Register or Login" href="{{ route('login') }}">
+                                            Login
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a title="Register or Login" href="{{ route('register') }}">
+                                            Register
+                                        </a>
+                                    </li>
+                                @endif
+
                                 <li class="menu-item lang-menu menu-item-has-children parent">
                                     <a title="English" href="#"><span class="img label-before"><img
                                                 src="assets/images/lang-en.png" alt="lang-en"></span>English<i
@@ -44,21 +54,20 @@
                                                         alt="lang-can"></span>Canada</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item menu-item-has-children parent">
-                                    <a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down"
-                                            aria-hidden="true"></i></a>
-                                    <ul class="submenu curency">
-                                        <li class="menu-item">
-                                            <a title="Pound (GBP)" href="#">Pound (GBP)</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a title="Euro (EUR)" href="#">Euro (EUR)</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a title="Dollar (USD)" href="#">Dollar (USD)</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                @if (auth()->check())
+                                    <li class="menu-item menu-item-has-children parent">
+                                        <a title="Dollar (USD)" href="#">
+                                            {{ auth()->user()->name }}
+                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        </a>
+
+                                        <ul class="submenu curency">
+                                            <li class="menu-item">
+                                                <a title="Pound (GBP)" href="#">Dashboard</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -158,7 +167,7 @@
                         <div class="container">
                             <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                                 <li class="menu-item home-icon">
-                                    <a href="{{route('them.home')}}" class="link-term mercado-item-title">
+                                    <a href="{{ route('them.home') }}" class="link-term mercado-item-title">
                                         <i class="fa fa-home" aria-hidden="true"></i>
                                     </a>
                                 </li>
