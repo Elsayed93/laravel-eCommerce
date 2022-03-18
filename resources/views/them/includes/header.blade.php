@@ -63,7 +63,10 @@
 
                                         <ul class="submenu curency">
                                             <li class="menu-item">
-                                                <a title="Pound (GBP)" href="#">Dashboard</a>
+                                                <a
+                                                    href="{{ auth()->user()->type == 'admin' ? route('admin.dashboard.home') : route('user.dashboard.home') }}">
+                                                    Dashboard
+                                                </a>
                                             </li>
                                         </ul>
                                     </li>
