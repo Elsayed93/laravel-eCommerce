@@ -68,6 +68,17 @@
                                                     Dashboard
                                                 </a>
                                             </li>
+
+                                            <li class="menu-item">
+                                                <a href="#"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    Logout
+                                                </a>
+                                                <form action="{{ route('logout') }}" method="post" id="logout-form">
+                                                    @csrf
+                                                </form>
+
+                                            </li>
                                         </ul>
                                     </li>
                                 @endif
