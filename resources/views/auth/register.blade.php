@@ -1,5 +1,13 @@
 @extends('them.master')
 
+@push('head')
+    <style>
+        .required-field {
+            color: red;
+        }
+
+    </style>
+@endpush
 @section('content')
     <div class="container">
 
@@ -14,38 +22,38 @@
                 <div class=" main-content-area">
                     <div class="wrap-login-item ">
                         <div class="register-form form-item ">
-                            <form  action="{{ route('register.post') }}" method="POST">
+                            <form action="{{ route('register.post') }}" method="POST">
                                 @csrf
                                 <fieldset class="wrap-title">
                                     <h3 class="form-title">Create an account</h3>
-                                    <h4 class="form-subtitle">Personal infomation</h4>
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-reg-lname">Name*</label>
-                                    <input type="text" id="frm-reg-lname" name="reg-lname" placeholder="Last name*">
+                                    <label for="frm-reg-name">Name <span class="required-field">*</span></label>
+                                    <input type="text" id="frm-reg-name" name="name" placeholder="name"
+                                        value="{{ old('name') }}" class="@error('name') is-invalid @enderror">
+                                    @error('name')
+                                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                                    @enderror
                                 </fieldset>
                                 <fieldset class="wrap-input">
-                                    <label for="frm-reg-email">Email Address*</label>
-                                    <input type="email" id="frm-reg-email" name="reg-email" placeholder="Email address">
-                                </fieldset>
-                                <fieldset class="wrap-functions ">
-                                    <label class="remember-field">
-                                        <input name="newletter" id="new-letter" value="forever" type="checkbox"><span>Sign
-                                            Up for Newsletter</span>
-                                    </label>
-                                </fieldset>
-                                <fieldset class="wrap-title">
-                                    <h3 class="form-title">Login Information</h3>
+                                    <label for="frm-reg-email">Email Address <span class="required-field">*</span> </label>
+                                    <input type="email" id="frm-reg-email" name="email" placeholder="Email address"
+                                        value="{{ old('email') }}" class="@error('email') is-invalid @enderror">
+                                    @error('email')
+                                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                                    @enderror
                                 </fieldset>
                                 <fieldset class="wrap-input item-width-in-half left-item ">
-                                    <label for="frm-reg-pass">Password *</label>
-                                    <input type="text" id="frm-reg-pass" name="reg-pass" placeholder="Password">
+                                    <label for="frm-reg-pass">Password <span class="required-field">*</span> </label>
+                                    <input type="password" class="@error('passoword') is-invalid @enderror" id="frm-reg-pass" name="password" placeholder="Password">
+                                    @error('password')
+                                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                                @enderror
                                 </fieldset>
-                                <fieldset class="wrap-input item-width-in-half ">
-                                    <label for="frm-reg-cfpass">Confirm Password *</label>
-                                    <input type="text" id="frm-reg-cfpass" name="reg-cfpass" placeholder="Confirm Password">
+
+                                <fieldset class="wrap-input">
+                                    <input type="submit" class="btn btn-sign" value="Register">
                                 </fieldset>
-                                <input type="submit" class="btn btn-sign" value="Register" name="register">
                             </form>
                         </div>
                     </div>

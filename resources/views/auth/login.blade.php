@@ -14,18 +14,28 @@
                 <div class=" main-content-area">
                     <div class="wrap-login-item ">
                         <div class="login-form form-item form-stl">
-                            <form name="frm-login">
+                            <form name="frm-login" action="{{ route('login.post') }}" method="POST">
+                                @csrf
                                 <fieldset class="wrap-title">
                                     <h3 class="form-title">Log in to your account</h3>
                                 </fieldset>
                                 <fieldset class="wrap-input">
                                     <label for="frm-login-uname">Email Address:</label>
                                     <input type="text" id="frm-login-uname" name="email"
-                                        placeholder="Type your email address">
+                                        placeholder="Type your email address" value="{{ old('email') }}"
+                                        class="@error('email') is-invalid @enderror">
+
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </fieldset>
                                 <fieldset class="wrap-input">
                                     <label for="frm-login-pass">Password:</label>
-                                    <input type="password" id="frm-login-pass" name="pass" placeholder="************">
+                                    <input type="password" id="frm-login-pass" name="password" placeholder="your password"
+                                        class="@error('password') is-invalid @enderror">
+                                    @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </fieldset>
 
                                 <fieldset class="wrap-input">
