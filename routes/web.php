@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\User\UserDashboardController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::get('/', function () {
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::resource('products', ProductController::class);
+// Route::get('/product/{slug}', [CheckoutController::class, 'index'])->name('checkout.index');
+
 
 require __DIR__ . '/auth.php';
 
