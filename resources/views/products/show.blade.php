@@ -310,16 +310,16 @@
                                 <li class="product-item">
                                     <div class="product product-widget-style">
                                         <div class="thumbnnail">
-                                            <a href="detail.html"
-                                                title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                            <a href="{{ route('products.show', $popularProduct->slug) }}"
+                                                title="{{ $popularProduct->name }}">
                                                 <figure><img
                                                         src="{{ asset('assets/images/products/' . $popularProduct->image) }}"
-                                                        alt="">
+                                                        alt="{{ $popularProduct->name }}">
                                                 </figure>
                                             </a>
                                         </div>
                                         <div class="product-info">
-                                            <a href="#" class="product-name">
+                                            <a href="{{ route('products.show', $popularProduct->slug) }}" class="product-name">
                                                 <span>
                                                     {{ $popularProduct->name }}
                                                 </span>
@@ -353,7 +353,8 @@
                             @foreach ($relatedProducts as $relatedProduct)
                                 <div class="product product-style-2 equal-elem ">
                                     <div class="product-thumnail">
-                                        <a href="detail.html" title="{{ $relatedProduct->name }}">
+                                        <a href="{{ route('products.show', $relatedProduct->slug) }}"
+                                            title="{{ $relatedProduct->name }}">
                                             <figure>
                                                 <img src="{{ asset('assets/images/products/' . $relatedProduct->image) }}"
                                                     width="214" height="214" alt="{{ $relatedProduct->name }}">
@@ -367,7 +368,7 @@
                                         </div>
                                     </div>
                                     <div class="product-info">
-                                        <a href="#" class="product-name">
+                                        <a href="{{ route('products.show', $relatedProduct->slug) }}" class="product-name">
                                             <span>
                                                 {{ $relatedProduct->name }}
                                             </span>
