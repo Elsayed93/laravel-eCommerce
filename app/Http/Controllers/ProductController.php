@@ -11,7 +11,7 @@ class ProductController extends Controller
 
     public function show($slug)
     {
-        $product = Product::where('slug', $slug)->get();
+        $product = Product::where('slug', $slug)->first();
 
 
         if ($product) {

@@ -8,8 +8,7 @@
     @include('them.includes.header')
 
     <main id="main">
-     @yield('content')
-
+        @yield('content')
     </main>
 
     @include('them.includes.footer')

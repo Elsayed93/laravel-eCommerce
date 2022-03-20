@@ -57,7 +57,6 @@
 
                 </div>
                 <!--end wrap shop control-->
-                {{-- {{dd($products)}} --}}
                 <div class="row">
 
                     <ul class="product-list grid-products equal-container">
@@ -66,7 +65,7 @@
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
                                     <div class="product-thumnail">
-                                        <a href="detail.html" title="{{ $product->name }}">
+                                        <a href="{{ route('products.show', $product->slug) }}" title="{{ $product->name }}">
                                             <figure>
                                                 <img src="{{ asset('assets/images/products/' . $product->image) }}"
                                                     alt="{{ $product->name }}">
@@ -95,7 +94,7 @@
                 </div>
 
                 <div class="wrap-pagination-info">
-                    {{$products->links()}}
+                    {{ $products->links() }}
                     {{-- <ul class="page-numbers">
                         <li><span class="page-number-item current">1</span></li>
                         <li><a class="page-number-item" href="#">2</a></li>
