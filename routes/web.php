@@ -24,6 +24,7 @@ Route::get('/', function () {
 })->name('them.home');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/addToCart', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::resource('products', ProductController::class);

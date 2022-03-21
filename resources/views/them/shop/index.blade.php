@@ -2,15 +2,14 @@
 
 @section('content')
     <div class="container">
-
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
                 <li class="item-link"><span>Digital & Electronics</span></li>
             </ul>
         </div>
-        <div class="row">
 
+        <div class="row">
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
 
                 <div class="banner-shop">
@@ -65,7 +64,8 @@
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
                                     <div class="product-thumnail">
-                                        <a href="{{ route('products.show', $product->slug) }}" title="{{ $product->name }}">
+                                        <a href="{{ route('products.show', $product->slug) }}"
+                                            title="{{ $product->name }}">
                                             <figure>
                                                 <img src="{{ asset('assets/images/products/' . $product->image) }}"
                                                     alt="{{ $product->name }}">
@@ -83,7 +83,18 @@
                                                 ${{ $product->regular_price }}
                                             </span>
                                         </div>
-                                        <a href="#" class="btn add-to-cart">Add To Cart</a>
+                                        <a href="#" class="btn add-to-cart"
+                                            onclick="event.preventDefault(); document.getElementById('add-to-cart-form').submit();">
+                                            Add To Cart
+                                        </a>
+                                        <form
+                                            action="{{ route('cart.add') }}"
+                                            method="post" id="add-to-cart-form">
+                                            @csrf
+                                            <input type="hidden" name="productId" value="{{ $product->id }}">
+                                            <input type="hidden" name="productName" value="{{ $product->name }}">
+                                            <input type="hidden" name="productPrice" value="{{ $product->regular_price }}">
+                                        </form>
                                     </div>
                                 </div>
                             </li>
