@@ -83,17 +83,17 @@
                                                 ${{ $product->regular_price }}
                                             </span>
                                         </div>
-                                        <a href="#" class="btn add-to-cart"
-                                            onclick="event.preventDefault(); document.getElementById('add-to-cart-form').submit();">
-                                            Add To Cart
-                                        </a>
-                                        <form
-                                            action="{{ route('cart.add') }}"
-                                            method="post" id="add-to-cart-form">
+
+                                        <form action="{{ route('cart.add') }}" method="post" class="add-to-cart-form">
                                             @csrf
                                             <input type="hidden" name="productId" value="{{ $product->id }}">
                                             <input type="hidden" name="productName" value="{{ $product->name }}">
-                                            <input type="hidden" name="productPrice" value="{{ $product->regular_price }}">
+                                            <input type="hidden" name="productPrice"
+                                                value="{{ $product->regular_price }}">
+                                            <a href="#" class="btn add-to-cart">
+                                                Add To Cart
+                                            </a>
+
                                         </form>
                                     </div>
                                 </div>
@@ -240,7 +240,9 @@
                                     <div class="thumbnnail">
                                         <a href="detail.html"
                                             title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="assets/images/products/digital_01.jpg" alt=""></figure>
+                                            <figure><img src="{{ asset('assets/images/products/digital_1.jpg') }}"
+                                                    alt="">
+                                            </figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
@@ -312,3 +314,16 @@
     </div>
     <!--end container-->
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+
+            // add-to-cart
+            $(document).on('click', '.add-to-cart', function(e) {
+                e.preventDefault();
+                $(this).closest('form').submit();
+            });
+        });
+    </script>
+@endpush

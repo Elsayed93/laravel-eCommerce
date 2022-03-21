@@ -1,7 +1,7 @@
 @extends('them.master')
 
 @section('content')
-{{-- {{dd(session()->all())}} --}}
+    {{-- {{dd(session()->all())}} --}}
     {{-- {{ dd(session('cartItem')) }} --}}
     <div class="container">
 
@@ -18,20 +18,19 @@
                 <h3 class="box-title">Products Name</h3>
                 @if (count(session('cartItems')) > 0)
                     <ul class="products-cart">
-                        @foreach (session('cartItems') as  $item)
-                        {{-- {{dd($item)}} --}}
+                        @foreach (session('cartItems') as $item)
                             <li class="pr-cart-item">
                                 <div class="product-image">
-                                    <figure><img src="assets/images/products/digital_18.jpg" alt=""></figure>
+                                    <figure><img src="{{ asset('assets/images/products/digital_18.jpg') }}" alt=""></figure>
                                 </div>
                                 <div class="product-name">
                                     <a class="link-to-product" href="#">
-                                        {{$item['productName'] }}
+                                        {{ $item['productName'] }}
                                     </a>
                                 </div>
 
                                 <div class="price-field produtc-price">
-                                    <p class="price">${{$item['productPrice'] }}</p>
+                                    <p class="price">${{ $item['productPrice'] }}</p>
                                 </div>
 
                                 <div class="quantity">
